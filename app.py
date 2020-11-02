@@ -5,6 +5,7 @@ import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+ps = PorterStemmer()
 nltk.download('stopwords')
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
