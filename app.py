@@ -2,6 +2,10 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import re 
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+nltk.download('stopwords')
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 tf1 = pickle.load(open("tfidf1.pkl", 'rb'))
