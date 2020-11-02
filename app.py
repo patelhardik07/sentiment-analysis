@@ -32,7 +32,7 @@ def predict():
     X_tf1 = tf1_new.fit_transform(new_corpus)
     x_new=X_tf1.toarray()
     prediction = model.predict(x_new)
-    if prediction[0] == 0:
+    if prediction[0] == 1:
         return render_template('index.html', prediction_text='Statement is Positive ')
     else:
         return render_template('index.html', prediction_text='Statement is Negative ')
