@@ -1,48 +1,90 @@
 <!DOCTYPE html>
-<html >
+
+<html>
+
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
+
 <head>
+
   <meta charset="UTF-8">
+
   <title>ML API</title>
+
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  
+
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  <link href="style.css" rel="stylesheet" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+
 </head>
 
-<body>
- <div class="main">
- <div class="login">
-   <img class="image" src="/undraw_growth_analytics_8btt.svg" alt="">
-   
-  <div class="card">
-  <h1 class="headline">Predict Sentiments</h1>
-  
-  <div class="pred">
-     <!-- Main Input For Receiving Query to our ML -->
-     <div class="form1">
-    <form action="{{ url_for('predict')}}"method="post">
-      <div class="inputs">
-    	<input id="iptext" type="text" name="Name" placeholder="Name" required="required" />
-      <input id="iptext" type="text" name="EID" placeholder="Email ID" required="required" />
-		<input id="iptext" type="text" name="Comment" placeholder="Your Review" required="required" />
-          
-        <button id="btn" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-      </div>
-      </div>
-      </form>
 
-   <br>
-   <br>
-   <div class="prediction">
-    {{ prediction_text }}
+<body>
+
+  <div class="main">
+
+    <div class="login">
+
+      <img class="image" src="undraw_growth_analytics_8btt.svg" alt="">
+
+
+      <div class="card">
+
+        <h1 class="headline">Predict Sentiments</h1>
+
+
+        <div class="pred">
+
+          <!-- Main Input For Receiving Query to our ML -->
+
+          <div class="form1">
+
+            <form action="{{ url_for('predict')}}" method="post">
+
+              <div class="inputs">
+
+                <input id="iptext" type="text" name="Name" placeholder="Name" required="required" />
+
+                <input id="iptext" type="text" name="EID" placeholder="Email ID" required="required" />
+
+                <input id="iptext" type="text" name="Comment" placeholder="Your Review" required="required" />
+
+
+                <button id="btn" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+              </div>
+
+          </div>
+
+          </form>
+
+
+          <br>
+          <br>
+
+          <div class="prediction">
+            {{ prediction_text }}
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-    </div>
- </div>
- </div>
- 
- </div>
+
+
+  </div>
+
+
 
 </body>
+
 </html>
