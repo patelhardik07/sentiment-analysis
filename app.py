@@ -31,7 +31,7 @@ def predict():
     tf1_new = TfidfVectorizer(vocabulary = tf1.vocabulary_)
     X_tf1 = tf1_new.fit_transform(new_corpus)
     x_new=X_tf1.toarray()
-    prediction = model.predict(x1)
+    prediction = model.predict(x_new)
     if prediction[0] == 0:
         return render_template('index.html', prediction_text='Statement is Positive ')
     else:
