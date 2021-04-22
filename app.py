@@ -14,12 +14,14 @@ model = pickle.load(open('model.pkl', 'rb'))
 tf1 = pickle.load(open("tfidf1.pkl", 'rb'))
 
 app = Flask(__name__)
-@app.route('/',methods=['POST'])
+
+# routes
+@app.route('/', methods=['POST'])
 def predict():
-    '''
+    # get data
     data = request.get_json(force=True)
     For rendering results on HTML GUI
-    '''
+   
     sent = request.form['Comment']
     new_corpus=[]
     sent = re.sub('[^a-zA-Z]',' ',sent)
@@ -36,6 +38,6 @@ def predict():
      #   return render_template('index.html', prediction_text='Statement is Positive ')
    # else:
     #    return render_template('index.html', prediction_text='Statement is Negative ')
-    return jsonify(results=data)
+    return jsonify(results=output)
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
