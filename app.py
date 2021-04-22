@@ -20,6 +20,7 @@ app = Flask(__name__)
 def predict():
     # get data
     data = request.get_json(force=True)
+    comment = data['comment']
     """For rendering results on HTML GUI
    
     sent = request.form['Comment']
@@ -38,6 +39,6 @@ def predict():
      #   return render_template('index.html', prediction_text='Statement is Positive ')
    # else:
     #    return render_template('index.html', prediction_text='Statement is Negative ')"""
-    return jsonify(data)
+    return jsonify({'message': comment})
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
