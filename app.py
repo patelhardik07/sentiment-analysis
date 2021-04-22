@@ -6,13 +6,15 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
 ps = PorterStemmer()
 nltk.download('stopwords')
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 tf1 = pickle.load(open("tfidf1.pkl", 'rb'))
+
 app = Flask(__name__)
-@app.route('/predict',methods=['POST'])
+@app.route('/',methods=['POST'])
 def predict():
     '''
     data = request.get_json(force=True)
