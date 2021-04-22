@@ -38,6 +38,6 @@ def predict():
      #   return render_template('index.html', prediction_text='Statement is Positive ')
    # else:
     #    return render_template('index.html', prediction_text='Statement is Negative ')
-    return jsonify(results=output)
+    return jsonify(data)
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
