@@ -36,6 +36,5 @@ def predict():
         return jsonify({'message': 'Statement is Positive '})
     else:
          return jsonify({'message':'Statement is Negative '})
-    return jsonify({'message': sent})
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
