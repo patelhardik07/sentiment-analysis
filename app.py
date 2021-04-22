@@ -11,13 +11,11 @@ nltk.download('stopwords')
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 tf1 = pickle.load(open("tfidf1.pkl", 'rb'))
-@app.route('/')
-def home():
-    return render_template('index.html')
-
+app = Flask(__name__)
 @app.route('/predict',methods=['POST'])
 def predict():
     '''
+    data = request.get_json(force=True)
     For rendering results on HTML GUI
     '''
     sent = request.form['Comment']
@@ -32,11 +30,10 @@ def predict():
     X_tf1 = tf1_new.fit_transform(new_corpus)
     x_new=X_tf1.toarray()
     prediction = model.predict(x_new)
-    if prediction[0] == 1:
-        return render_template('index.html', prediction_text='Statement is Positive ')
-    else:
-        return render_template('index.html', prediction_text='Statement is Negative ')
-
-
+    #if prediction[0] == 1:
+     #   return render_template('index.html', prediction_text='Statement is Positive ')
+   # else:
+    #    return render_template('index.html', prediction_text='Statement is Negative ')
+    return jsonify(results=data)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port = 5000, debug=True)
