@@ -35,8 +35,8 @@ def predict():
         X_tf1 = tf1_new.fit_transform(new_corpus)
         x_new=X_tf1.toarray()
         prediction = model.predict(x_new)
-        if prediction[0] == 1
-        res[message]="Statement is Positive"
+        if prediction[0] == 1:
+            res[message]="Statement is Positive"
         else:
             res[message]="Statement is Negative"
     return jsonify(res)
