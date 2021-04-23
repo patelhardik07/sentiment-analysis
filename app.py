@@ -35,7 +35,6 @@ def predict():
         X_tf1 = tf1_new.fit_transform(new_corpus)
         x_new=X_tf1.toarray()
         prediction = model.predict(x_new)
-        res[message]=
         if prediction[0] == 1:
             res[message]='Statement is Positive'
         else:
