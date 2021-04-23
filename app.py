@@ -40,6 +40,6 @@ def predict():
             res[message]='Statement is Positive'
         else:
             res[message]='Statement is Negative '
-     return jsonify(res)
+    return jsonify(res)
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
