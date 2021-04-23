@@ -9,7 +9,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 ps = PorterStemmer()
 nltk.download('stopwords')
-app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 tf1 = pickle.load(open("tfidf1.pkl", 'rb'))
 
@@ -18,6 +17,7 @@ app = Flask(__name__)
 # routes
 @app.route('/', methods=['POST'])
 def predict():
+    
     # get data
     data = request.get_json(force=True)
     res={}
