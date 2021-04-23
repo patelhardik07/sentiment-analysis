@@ -23,7 +23,7 @@ def predict():
     res={}
     tf1_new = TfidfVectorizer(vocabulary = tf1.vocabulary_)
     for i in range (len(data['comment'])):
-        sent = data['comment'][i+1]
+        sent = data['comment'][i]
         message=sent
         new_corpus=[]
         sent = re.sub('[^a-zA-Z]',' ',sent)
