@@ -20,21 +20,26 @@ app = Flask(__name__)
 def predict():
     # get data
     data = request.get_json(force=True)
-    sent = data['comment']
-    new_corpus=[]
-    sent = re.sub('[^a-zA-Z]',' ',sent)
-    sent = sent.lower()
-    sent = sent.split()
-    sent = [ps.stem(word) for word in sent if not word in stopwords.words('english')]
-    sent = ' '.join(sent)
-    new_corpus.append(sent)
-    tf1_new = TfidfVectorizer(vocabulary = tf1.vocabulary_)
-    X_tf1 = tf1_new.fit_transform(new_corpus)
-    x_new=X_tf1.toarray()
-    prediction = model.predict(x_new)
-    if prediction[0] == 1:
-        return jsonify({'message': 'Statement is Positive '})
-    else:
-         return jsonify({'message':'Statement is Negative '})
+    res={}
+    for i in range(len(data['comment'])):
+        sent = data['comment'][i+1]
+        message=sent
+        new_corpus=[]
+        sent = re.sub('[^a-zA-Z]',' ',sent)
+        sent = sent.lower()
+        sent = sent.split()
+        sent = [ps.stem(word) for word in sent if not word in stopwords.words('english')]
+        sent = ' '.join(sent)
+        new_corpus.append(sent)
+        tf1_new = TfidfVectorizer(vocabulary = tf1.vocabulary_)
+        X_tf1 = tf1_new.fit_transform(new_corpus)
+        x_new=X_tf1.toarray()
+        prediction = model.predict(x_new)
+        res[message]=
+        if prediction[0] == 1:
+            res[message]='Statement is Positive'
+        else:
+            res[message]='Statement is Negative '
+     return jsonify(res)
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
