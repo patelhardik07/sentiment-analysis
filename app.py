@@ -22,7 +22,7 @@ def predict():
     data = request.get_json(force=True)
     res={}
     tf1_new = TfidfVectorizer(vocabulary = tf1.vocabulary_)
-    for i in range(len(data['comment'])):
+    for i in range (len(data['comment'])):
         sent = data['comment'][i+1]
         message=sent
         new_corpus=[]
