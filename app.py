@@ -21,6 +21,7 @@ def predict():
     # get data
     data = request.get_json(force=True)
     res={}
+    tf1_new = TfidfVectorizer(vocabulary = tf1.vocabulary_)
     for i in range(len(data['comment'])):
         sent = data['comment'][i+1]
         message=sent
@@ -31,14 +32,13 @@ def predict():
         sent = [ps.stem(word) for word in sent if not word in stopwords.words('english')]
         sent = ' '.join(sent)
         new_corpus.append(sent)
-        tf1_new = TfidfVectorizer(vocabulary = tf1.vocabulary_)
         X_tf1 = tf1_new.fit_transform(new_corpus)
         x_new=X_tf1.toarray()
         prediction = model.predict(x_new)
-        if prediction[0] == 1:
-            res[message]='Statement is Positive'
+        if prediction[0] == 1
+        res[message]="Statement is Positive"
         else:
-            res[message]='Statement is Negative '
+            res[message]="Statement is Negative"
     return jsonify(res)
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
