@@ -1,6 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-from flask_cors import CORS 
+#from flask_cors import CORS 
 import pickle
 import re 
 import nltk
@@ -17,7 +17,7 @@ app = Flask(__name__)
 #CORS(app)
 # routes
 @app.route('/', methods=['POST'])
-@crossdomain(origin='*')
+#@crossdomain(origin='*')
 def predict():
     
     # get data
