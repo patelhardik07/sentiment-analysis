@@ -1,6 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-#from flask_cors import CORS 
+from flask_cors import CORS 
 import pickle
 import re 
 import nltk
@@ -14,7 +14,12 @@ model = pickle.load(open('model.pkl', 'rb'))
 tf1 = pickle.load(open("tfidf1.pkl", 'rb'))
 
 app = Flask(__name__)
-#CORS(app)
+CORS(app)
+cors = CORS(app, resources={
+    r"/*": {
+        "origins": "*"
+    }
+})
 # routes
 @app.route('/', methods=['POST'])
 #@crossdomain(origin='*')
