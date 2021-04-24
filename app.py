@@ -14,9 +14,10 @@ model = pickle.load(open('model.pkl', 'rb'))
 tf1 = pickle.load(open("tfidf1.pkl", 'rb'))
 
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
 # routes
 @app.route('/', methods=['POST'])
+@crossdomain(origin='*')
 def predict():
     
     # get data
