@@ -42,10 +42,13 @@ def predict():
         X_tf1 = tf1_new.fit_transform(new_corpus)
         x_new=X_tf1.toarray()
         prediction = model.predict(x_new)
+         res[i]={}
         if prediction[0] == 1:
-            res[message]="Statement is Positive"
+            res[i]['comment']=data['comment'][i]
+            res[i]['sentiment']="Postive"
         else:
-            res[message]="Statement is Negative"
+            res[i]['comment']=data['comment'][i]
+            res[i]['sentiment']="Negative"
     return jsonify(res)
 if __name__ == "__main__":
     app.run(port = 5000, debug=True)
